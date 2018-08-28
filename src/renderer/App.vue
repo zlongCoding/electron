@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <el-container>
-      <el-header class="el-header">
+    <el-header class="el-header">
         <div class="browser-title">
-           <img src="./assets/logo.png" alt="" class="app-icon">
+           <img src="./assets/novel.jpg" alt="" class="app-icon">
            <span class="app-name">novel1</span>
-           <!-- <span class="app-title" >&nbsp;-&nbsp;{{title}}</span> -->
         </div>
         <div class="header-right">
          <button class="ctrl-icon minimize" title="最小化窗口"  @click="handleMinimize"></button>
@@ -13,21 +11,25 @@
          <button class="ctrl-icon close" title="关闭窗口" @click="handleClose"></button>
         </div>
       </el-header>
-      <el-aside>11</el-aside>
-      <el-main>
+    <el-container class="container">
+      <el-aside width="180px">
+         <my-aside></my-aside>
+      </el-aside>
+      <div class="novel_content">
           <router-view></router-view>
-      </el-main>
-      <el-footer>
-
-      </el-footer>
+      </div>
     </el-container>
-    
+    <p class="footer">个人项目不用于任何商业用途</p>
   </div>
 </template>
 
 <script>
+import myAside from "./pages/aside.vue"
 export default {
   name: "novel",
+  components: {
+    myAside
+  },
   methods: {
     currentWindow() {
       return this.$electron.remote.getCurrentWindow()
@@ -60,24 +62,36 @@ export default {
 };
 </script>
 
-<style type="text/css">
+<style type="text/css" scoped>
 #app {
   margin: 0 auto;
-  position: absolute;
   width: 100%;
   height: 100%;
-  border: solid 1px #181a1f;
+ 
+}
+.el-container{
+  display: flex;
+   height: calc(100vh - 30px);
+}
+.container{
+  padding-top:40px;
 }
 ::-webkit-scrollbar{
   width: 0;
   height: 0;
 }
-
+.novel_content{
+  width: calc(100% - 180px);
+  padding: 0 10px;
+  background: #333;
+}
 .browser {
   height: 100%;
 }
 .el-header {
   display: flex;
+  position: fixed;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   height: 40px !important;
@@ -85,6 +99,8 @@ export default {
   color: #fff;
   -webkit-app-region: drag;
   user-select: none;
+  top: 0;
+  z-index: 9999;
 }
 
 .app-icon {
@@ -104,6 +120,7 @@ export default {
   margin-right: 5px;
   -webkit-app-region: no-drag;
 }
+
 .ctrl-icon {
   display: inline-block;
   outline: none;
@@ -129,5 +146,12 @@ export default {
 }
 .ctrl-icon.close {
   background: #fc625d;
+}
+.footer{
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 12px;
+  color: #333;
 }
 </style>

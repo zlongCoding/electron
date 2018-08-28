@@ -19,7 +19,27 @@ npm test
 
 
 ```
+src 源代码
 
+├─main                    //server
+│  └─server
+│      ├─controller
+│      ├─crawler
+│      ├─database
+│      ├─middleware
+│      │  └─logger
+│      ├─router
+│      ├─tasks
+│      └─utils
+└─renderer             //client
+    ├─assets
+    ├─components
+    │  └─LandingPage
+    ├─css
+    ├─pages
+    ├─router
+    └─store
+        └─modules
 ---
 
 

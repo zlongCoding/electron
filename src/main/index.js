@@ -1,5 +1,9 @@
 import { app, BrowserWindow } from 'electron'
 import path from 'path'
+// require("app.js") 
+import server from "./server/app.js"
+// const a = require("./config")
+// const server = require('./app.js')
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -20,6 +24,7 @@ const winURL = process.env.NODE_ENV === 'development'
     width: 1000
   }
 function createWindow () {
+  app.server = server;
   /**
    * Initial window options
    */

@@ -11,7 +11,7 @@
 process.env.NODE_ENV = 'development'
 
 // Install `electron-debug` with `devtron`
-require('electron-debug')({ showDevTools: true })
+require('../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/electron-debug')({ showDevTools: true })
 
 // Install `vue-devtools`
 require('electron').app.on('ready', () => {
@@ -24,4 +24,4 @@ require('electron').app.on('ready', () => {
 })
 
 // Require `main` process to boot app
-require('./index')
+require('.')

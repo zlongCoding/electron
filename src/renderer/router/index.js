@@ -3,12 +3,13 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+let novel = () => import('@/pages/content')
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'landing-page',
-      component: require('@/components/LandingPage').default
+      name: 'novel',
+      component: novel
     },
     {
       path: '*',
