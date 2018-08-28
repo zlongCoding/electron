@@ -5,11 +5,13 @@ import logger from 'koa-logger'
 import cors from 'koa2-cors'
 import config from "../config"
 import logger from "./middleware/logger"
-
+import static from "koa-static"
 const app = new koa()
 
 //静态资源
-// app.use(static(config.staticFilePath))
+app.use(static(
+   __dirname + "/public"
+))
 //跨域
 app.use(logger())
 app.use(cors())
@@ -17,7 +19,7 @@ app.use(cors())
 
 
 app.use(koaBody({multipart: true}))
-app.use(router.routes()).use(router.allowedMethods())
+// app.use(router.routes()).use(router.allowedMethods())
 app.listen(config.port, () => {
   console.log(`Server start at http://127.0.0.1:${config.port}`)
 })
