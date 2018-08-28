@@ -19,6 +19,8 @@ npm test
 
 
 ```
+---
+```
 src 源代码
 
 ├─main                    //server
@@ -40,6 +42,6 @@ src 源代码
     ├─router
     └─store
         └─modules
----
+```
 
 
